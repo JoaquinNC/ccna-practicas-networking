@@ -1,0 +1,50 @@
+Red mixta y análisis de tráfico (repaso general)
+Objetivo: Repasar cableado correcto, configuración básica, hostname, contraseñas, tablas MAC y análisis de tráfico.
+
+Topología sugerida:
+
+2 routers (R1 y R2)
+
+3 switches (SW1, SW2, SW3)
+
+4 PCs (PC1, PC2, PC3, PC4)
+
+1 servidor (Server1)
+
+Pasos:
+
+Diseñá la red de forma que:
+
+R1 se conecte a SW1 y SW2
+
+R2 se conecte a SW3
+
+PC1 y PC2 estén en SW1
+
+PC3 esté en SW2
+
+PC4 y Server1 estén en SW3
+
+R1 y R2 estén conectados entre sí (con la distancia que te permita pensar en el tipo de cable correcto)
+
+Cambiá los hostnames de los dispositivos.
+
+Configurá una contraseña de tipo enable password y enable secret en todos los routers y switches.
+
+Configurá IPs en todas las PCs y en Server1. Usá diferentes rangos de red para cada switch:
+
+SW1: 192.168.1.0/24
+
+SW2: 192.168.2.0/24
+
+SW3: 10.10.10.0/24
+
+Usá show mac address-table y show arp para verificar el tráfico.
+
+Usá Simulation Mode para analizar qué pasa cuando:
+
+PC1 hace ping a PC3
+
+PC4 accede al servidor (por ejemplo, con ping o HTTP si querés activarlo en el server)
+
+Limpiá las tablas MAC y analizá cómo se vuelven a llenar.

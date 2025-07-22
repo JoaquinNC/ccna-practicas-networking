@@ -1,0 +1,28 @@
+Realice las siguientes conexiones:
+Utilizando copper straight-trough:
+PC1 y PC2 a SW1, PC3 y PC4 a SW2, PC5 PC6 y SV1 a SW3.
+SW1 y SW2 a R1, SW3 a R2.
+R1 y R2 se conectan con cross over copper
+
+R1:
+comienzo con un enable, conf t y realizo hostname R1. Realizo un do show ip int br para ver el estado de las interfaces.
+Procedo a asignar las IP de las redes: int g0/0, ip address 10.0.1.254 255.255.255.0, no shutdown.
+int g0/1, ip address 10.0.2.254 255.255.255.0, no shutdown, exit, do show ip int br para ver que esten en 'up' las interfaces configuradas.
+int g0/2, ip address 10.0.10.253 255.255.255.252, no shutdown.
+R2:
+Asigno la ip de la red: int g0/0, ip address 10.0.3.254 255.255.255.0, no shutdown, exit, do sh ip int br
+int g0/1, ip address 10.0.10.254 255.255.255.252, no shutdown.
+(quisiera que me comentes si están bien asignadas las IP entre los router, no segui tus pasos porque sentía que me decias las respuestas a la actividad. Y si están mal o se usan otras IP en la vida real coméntamelo por favor).
+PC1: al colocar la IP 10.0.1.10 me coloco la siguiente submask: 255.0.0.0. Al ver que me habias dicho /24 la cambie a 255.255.255.0. Veremos si funciona la red una vez termine de configurarla por completo. (Nota: voy a colocar todas las submask a 255.255.255.0 si no se asignan asi automáticamente). Sabiendo que hay que asignar gateways aprovecho y configuro la Gateway: 10.0.1.254.
+PC2: realizo los pasos anteriores pero con su IP correspondiente: 10.0.1.11
+PC3: le asigno su IP correspondiente con la submask /24. Le asigno el Gateway 10.0.2.254
+PC4: realizo lo mismo pero con su IP 10.0.2.11
+PC5: Le asigno su IP 10.0.3.10 y la Gateway: 10.0.3.254
+PC6: realizo lo mismo pero con la IP 10.0.3.11
+SV1: realizo lo mismo pero le asigno la IP 10.0.3.100
+
+Cambio el hostname de los 3 switches que no lo había realizo antes
+
+Voy a realizar la seguridad de los router y switches, al ser los mismos pasos lo comento solo una vez, pero se realiza el procedimiento en SW1, SW2, SW3, R1 y R2: service password-encryption, enable secrect cisco, exit, copy running-config startup-config.
+Voy a deshabilitar las interfaces que no voy a utilizar en los switches por motivos de seguridad: interface range f0/3 - 24, description #not in use#, shutdown,exit. En SW3 tengo que hacer f0/4 - 24 por las dudas aclaro.
+

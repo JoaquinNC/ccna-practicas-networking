@@ -1,0 +1,40 @@
+Subredes múltiples en un router (profundizar en la 6)
+Objetivo: Practicar direccionamiento IP, uso de subredes distintas en interfaces de un mismo router, ver rutas directamente conectadas.
+
+Topología sugerida:
+
+1 router (R1)
+
+3 switches (SW1, SW2, SW3)
+
+3 PCs (PC1, PC2, PC3)
+
+Conexiones:
+
+R1 a SW1, SW2 y SW3 (una interfaz para cada switch)
+
+Cada switch conectado a una PC
+
+Pasos:
+
+Asigná los siguientes rangos IP a cada red:
+
+Red 1 (PC1): 10.0.0.0/8
+
+Red 2 (PC2): 172.16.0.0/16
+
+Red 3 (PC3): 192.168.1.0/24
+
+Configurá las interfaces del router con IPs dentro de esos rangos y activalas.
+
+Asigná IPs estáticas a cada PC, con gateway apuntando a su respectiva interfaz del router.
+
+Usá show ip interface brief y show running-config para verificar.
+
+Hacé ping entre las PCs. ¿Pueden comunicarse entre sí? ¿Por qué?
+
+Usá show ip route para ver las rutas directamente conectadas.
+
+Agregá descripciones en las interfaces del router.
+
+Guardá la configuración.

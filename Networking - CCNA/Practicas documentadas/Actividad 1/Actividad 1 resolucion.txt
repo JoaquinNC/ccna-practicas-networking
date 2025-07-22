@@ -1,0 +1,25 @@
+SW1 utiliza copper straight through en la conexión gigabit hacia R1
+SW2 realiza lo mismo que SW1
+SW3 hace el mismo proceso pero con R2
+PC1 utiliza copper striaght through en la conexión FastEthernet hacia SW1
+PC2 realiza lo mismo que PC1
+PC3 hace lo mismo pero hacia SW2
+PC4 hace lo mismo pero hacia SW3
+SV1 hace lo mismo que PC4
+R1 y R2 se conectan mediante copper Cross-over Cable (pensando en 10 Gig Ethernet). Podria haber optado por fibra óptica pero los routers que elegi no tienen esa entrada, asi que simulo que la red tiene menos de 100 metros.
+
+En SW1 realizo: enable, conf t, hostname SW1. Hice lo mismo con SW2, SW3, R1 y R2 respectivamente.
+
+Utilizo service password-encryption En los dispositivos solicitados
+Utilizo enable secret cisco en todos los dispositivos (para no confundirme de contraseñas)
+
+En PC1 y PC2 me fui a FastEthernet0 y coloque en IPv4 Address 192.168.1.1 y 192.168.1.2
+En PC3 hice lo mismo y coloque 192.168.2.1
+En PC4 hice lo mismo y coloque 10.10.10.1 y en SV1 10.10.10.2
+
+Como necesito comunicar los switches mediante routers para pingear entre PCs realice la siguiente configuración en R1: conf t, in g0/0, ip address 192.168.1.254 255.255.255 0, no shutdown. Y luego lo mismo pero para g0/1, ip address 192.168.2.254 255.255.255.0, no shutdown.
+
+En R2 configure para conectarme al SW3: in g0/0, ip address 10.10.10.254 255.255.255.0, no shutdown
+
+Configure R1 y R2 para que se comuniquen en R1 g0/2, ip address 192.168.10.1 255.255.255.252, no shutdown y en R2 g0/1, ip address 192.168.10.2 255.255.255.252, no shutdown
+

@@ -1,0 +1,113 @@
+Repaso Completo de Redes Básicas (Routers, Switches, IPs, MAC, Default Gateway)
+Objetivo:
+Crear una red más grande usando routers, switches y PCs, configurando direcciones IP, gateways, contraseñas, y probando conectividad.
+
+Dispositivos:
+2 Routers Cisco 2911 (R1 y R2)
+
+3 Switches Cisco 2960 (SW1, SW2, SW3)
+
+6 PCs (PC1 a PC6)
+
+1 Servidor (SV1)
+
+Topología:
+SW1 conecta a PC1 y PC2.
+
+SW2 conecta a PC3 y PC4.
+
+SW3 conecta a PC5, PC6 y SV1.
+
+SW1 se conecta a R1.
+
+SW2 se conecta a R1.
+
+SW3 se conecta a R2.
+
+R1 y R2 se conectan directamente entre sí.
+
+(Si querés, después te puedo dibujar un diagrama también.)
+
+Instrucciones
+
+Parte 1 - Direccionamiento IP
+Red 1 (entre SW1 y R1): 10.0.1.0/24
+
+Red 2 (entre SW2 y R1): 10.0.2.0/24
+
+Red 3 (entre SW3 y R2): 10.0.3.0/24
+
+Conexión entre R1 y R2: 10.0.10.0/30
+
+Asignaciones de IP:
+PC1: 10.0.1.10
+
+PC2: 10.0.1.11
+
+PC3: 10.0.2.10
+
+PC4: 10.0.2.11
+
+PC5: 10.0.3.10
+
+PC6: 10.0.3.11
+
+SV1: 10.0.3.100
+
+R1 G0/0: 10.0.1.254
+
+R1 G0/1: 10.0.2.254
+
+R1 G0/2: 10.0.10.1
+
+R2 G0/0: 10.0.3.254
+
+R2 G0/1: 10.0.10.2
+
+(Asegurate de hacer no shutdown en todas las interfaces.)
+
+Parte 2 - Configuración extra
+Cambiar hostname en todos los dispositivos.
+
+Configurar enable secret cisco y service password-encryption en routers y switches.
+
+Configurar una descripción en cada interfaz de router (opcional pero recomendado, ej: description Conexion a SW1).
+
+Asignar default gateway en cada PC:
+
+PC1, PC2: 10.0.1.254
+
+PC3, PC4: 10.0.2.254
+
+PC5, PC6, SV1: 10.0.3.254
+
+Parte 3 - Comprobación
+Hacer ping de:
+
+PC1 → PC4
+
+PC3 → SV1
+
+PC5 → PC2
+
+Probar ping directo entre R1 y R2.
+
+Borrar la tabla MAC de un switch (clear mac address-table dynamic) y observar qué sucede en los pings con simulation mode.
+
+Parte 4 - Guardar Configuración
+
+en todos los dispositivos importantes.
+
+Objetivos de aprendizaje:
+Conectar redes usando múltiples routers.
+
+Asignar IPs y gateways correctamente.
+
+Configurar passwords y seguridad básica.
+
+Entender el comportamiento de MAC y ARP.
+
+Probar toda la conectividad de punta a punta.
+
+
+Configurar en R1 y R2 una ruta estática para alcanzar la red del otro:

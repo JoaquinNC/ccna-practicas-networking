@@ -1,0 +1,9 @@
+Hice las conexiones como se menciona, solo que SW1 y SW2 usan GigEthernet y SW3 FastEthernet.
+
+asigne a g0/0 la ip 10.0.0.254
+le asigne a g0/1 172.16.0.254
+le asigne a g0/2 192.168.1.254
+
+le asigne a pc1 10.0.0.5
+le asigne a pc2 172.16.0.5
+le asigne a pc3 192.168.1.5
